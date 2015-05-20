@@ -47,11 +47,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\TrendGraph\DrawLine.cs" />
-     <Compile Include="Assets\TrendGraph\DrawLineTest.cs" />
+     <Compile Include="Assets\TrendGraph\Example\DrawLineTest.cs" />
      <Compile Include="Assets\TrendGraph\Example\SumOfSinesDisturbance.cs" />
-     <Compile Include="Assets\TrendGraph\IOrderedDictionary.cs" />
-     <Compile Include="Assets\TrendGraph\OrderedDictionary.cs" />
+     <Compile Include="Assets\TrendGraph\Example\TrendGraphDataAdapter.cs" />
      <Compile Include="Assets\TrendGraph\TrendGraphController.cs" />
+     <Compile Include="Assets\VTL\RTSCamera.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/apps/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

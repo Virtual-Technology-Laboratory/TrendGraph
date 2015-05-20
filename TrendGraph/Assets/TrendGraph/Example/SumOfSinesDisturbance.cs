@@ -18,6 +18,11 @@ namespace VTL
                 this.frequency = frequency;
                 this.phase = phase;
             }
+            public override string ToString()
+            {
+                return string.Format("{0:0.00000}, {1:0.00000}, {2:0.00000}", 
+                                     amplitude, frequency, phase);
+            }
         }
 
         List<WaveformComponent> waveformComponents;
@@ -54,8 +59,8 @@ namespace VTL
             {
                 return 0.0f;
             }
-            float u1 = Random.Range(0, 1);
-            float u2 = Random.Range(0, 1);
+            float u1 = Random.Range(0f, 1f);
+            float u2 = Random.Range(0f, 1f);
             float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) *
                                   Mathf.Sin(2.0f * Mathf.PI * u2);
             return stdDev * randStdNormal;

@@ -12,3 +12,17 @@ D:\ownCloud\documents\Documentation\TrendGraph\Temp\bin\Debug\Unity.CecilTools.d
 D:\ownCloud\documents\Documentation\TrendGraph\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
 D:\ownCloud\documents\Documentation\TrendGraph\obj\Debug\Assembly-CSharp.dll
 D:\ownCloud\documents\Documentation\TrendGraph\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\obj\Debug\Assembly-CSharp.dll
+C:\Users\Administrator\Documents\GitHub\TrendGraph\TrendGraph\obj\Debug\Assembly-CSharp.pdb
