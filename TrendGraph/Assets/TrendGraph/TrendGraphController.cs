@@ -48,7 +48,8 @@ namespace VTL.TrendGraph
         float h;
 
         RectTransform rectTransform;
-        Transform lineAnchor;
+        RectTransform lineAnchor;
+        Canvas parentCanvas;
 
         public void OnValidate()
         {
@@ -75,7 +76,19 @@ namespace VTL.TrendGraph
             timeseries = new List<TimeseriesRecord>();
             rectTransform = transform.Find("Graph") as RectTransform;
             lineAnchor = transform.Find("Graph")
-                                  .Find("LineAnchor");
+                                  .Find("LineAnchor") as RectTransform;
+
+            // Walk up the Hierarchy to find the parent canvas.
+            var parent = transform.parent;
+            while(parent != null)
+            {
+                parentCanvas = parent.GetComponent<Canvas>();
+                if (parentCanvas != null)
+                    parent = null; // stop condition
+                else
+                    parent = parent.parent;
+            }
+
             valueText = transform.Find("Value").GetComponent<Text>();
         }
 
@@ -90,9 +103,18 @@ namespace VTL.TrendGraph
 
             // Need to check the origin and the width and height everytime
             // just in case the panel has been resized
-            origin = rectTransform.position;
-            origin.y = Screen.height - origin.y;
 
+            switch (parentCanvas.renderMode)
+            {
+                case RenderMode.ScreenSpaceOverlay:
+                    origin = rectTransform.position;
+                    origin.y = Screen.height - origin.y;
+                    break;
+                default:
+                    origin = RectTransformUtility.WorldToScreenPoint(parentCanvas.worldCamera, lineAnchor.position);
+                    origin.y = Screen.height - origin.y;
+                    break;
+            }
             w = rectTransform.rect.width * transform.localScale.x;
             h = rectTransform.rect.height * transform.localScale.y;
 
