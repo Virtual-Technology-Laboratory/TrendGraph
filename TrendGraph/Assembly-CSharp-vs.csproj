@@ -46,12 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\SimTimeControls\Scripts\PlaySpeedSliderControl.cs" />
+     <Compile Include="Assets\SimTimeControls\Scripts\TimeCtrlToggleGroupEventHandlers.cs" />
+     <Compile Include="Assets\SimTimeControls\Scripts\TimeSlider.cs" />
+     <Compile Include="Assets\SimTimeControls\Scripts\UpdateUIDatetimeText.cs" />
+     <Compile Include="Assets\SimTimeControls\Scripts\UpdateUISimstepText.cs" />
      <Compile Include="Assets\TrendGraph\DrawLine.cs" />
      <Compile Include="Assets\TrendGraph\Example\DrawLineTest.cs" />
      <Compile Include="Assets\TrendGraph\Example\SumOfSinesDisturbance.cs" />
      <Compile Include="Assets\TrendGraph\Example\TrendGraphDataAdapter.cs" />
      <Compile Include="Assets\TrendGraph\TrendGraphController.cs" />
      <Compile Include="Assets\VTL\RTSCamera.cs" />
+     <None Include="Assets\SimTimeControls\Resources\UI\NWbtnPackage\NWbtnPackage.README.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/apps/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

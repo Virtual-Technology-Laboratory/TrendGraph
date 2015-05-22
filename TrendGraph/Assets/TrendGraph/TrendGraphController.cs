@@ -39,9 +39,9 @@ namespace VTL.TrendGraph
                                                 // this makes sense with the timebase
         public string unitsLabel = "F"; // the units label
         public string valueFormatString = "D3";
-
+        private DateTime lastDraw;
+        
         List<TimeseriesRecord> timeseries;
-        DateTime lastDraw;
         Text valueText;
         Vector3 origin;
         float w;
@@ -96,14 +96,37 @@ namespace VTL.TrendGraph
         // has to be drawn in draw line
         void OnGUI()
         {
-            int n = timeseries.Count;
+            // sort the records incase they are out of order
+            timeseries.Sort((s1, s2) => s1.time.CompareTo(s2.time));
 
+            // cull old records
+            if (timeseries.Count == 0) return;
+            var elapsed = (float)(lastDraw - timeseries[0].time).TotalSeconds;
+            while (elapsed > timebase && elapsed > 0)
+            { 
+                timeseries.RemoveAt(0);
+                if (timeseries.Count == 0) return;
+                elapsed = (float)(lastDraw - timeseries[0].time).TotalSeconds;
+            }
+
+            // cull future records
+            // e.g. SimTimeControl, user scrubbing backwards
+            int m = timeseries.Count - 1;
+            if (m == -1) return;
+            while (timeseries[m].time > (DateTime)lastDraw)
+            {
+                timeseries.RemoveAt(m);
+                m = timeseries.Count - 1;
+                if (m == -1) return;
+            }
+
+            // return if there are less than 2 records after culling
+            int n = timeseries.Count;
             if (n < 2)
                 return;
 
-            // Need to check the origin and the width and height everytime
+            // Need to check the origin and the width and height every draw
             // just in case the panel has been resized
-
             switch (parentCanvas.renderMode)
             {
                 case RenderMode.ScreenSpaceOverlay:
@@ -117,9 +140,6 @@ namespace VTL.TrendGraph
             }
             w = rectTransform.rect.width * transform.localScale.x;
             h = rectTransform.rect.height * transform.localScale.y;
-
-            // Need to save the latest time so we can remove old records
-            lastDraw = timeseries[n - 1].time;
 
             // Iterate through the timeseries and draw the trend segment
             // by segment.
@@ -146,11 +166,8 @@ namespace VTL.TrendGraph
         public void Add(TimeseriesRecord record)
         {
             timeseries.Add(record);
+            lastDraw = record.time;
             valueText.text = record.value.ToString(valueFormatString);
-
-            // cull old records
-            while ((lastDraw - timeseries[0].time).TotalSeconds > (double)timebase)
-                timeseries.RemoveAt(0);
         }
         
         public void Add(DateTime time, float value)
