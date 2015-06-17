@@ -23,7 +23,7 @@ namespace VTL.SimTimeControls
                     EditorGUILayout.FloatField("Baseline Hours / Second Rate", script.ExponentialSpeedSecToHourBaseline);
             }
 
-
+            // Doesn't remember changes without this
             if (GUI.changed)
             {
                 EditorUtility.SetDirty(script);

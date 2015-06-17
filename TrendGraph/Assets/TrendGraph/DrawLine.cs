@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿#pragma warning disable 0219 // variable assigned but not used.
+
+using System.Reflection;
 using UnityEngine;
 
 namespace VTL.TrendGraph
