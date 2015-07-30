@@ -43,12 +43,14 @@ namespace VTL.TrendGraph
         
         List<TimeseriesRecord> timeseries;
         Text valueText;
-        Vector3 origin;
-        float w;
-        float h;
+        public Vector2 origin;
+        public Vector2 origin2;
+        public float w;
+        public float h;
 
         RectTransform rectTransform;
         RectTransform lineAnchor;
+        RectTransform lineAnchor2;
         Canvas parentCanvas;
 
         public void OnValidate()
@@ -77,6 +79,8 @@ namespace VTL.TrendGraph
             rectTransform = transform.Find("Graph") as RectTransform;
             lineAnchor = transform.Find("Graph")
                                   .Find("LineAnchor") as RectTransform;
+            lineAnchor2 = transform.Find("Graph")
+                                  .Find("LineAnchor2") as RectTransform;
 
             // Walk up the Hierarchy to find the parent canvas.
             var parent = transform.parent;
@@ -132,14 +136,28 @@ namespace VTL.TrendGraph
                 case RenderMode.ScreenSpaceOverlay:
                     origin = rectTransform.position;
                     origin.y = Screen.height - origin.y;
+                    w = rectTransform.rect.width * transform.localScale.x;
+                    h = rectTransform.rect.height * transform.localScale.y;
                     break;
                 default:
-                    origin = RectTransformUtility.WorldToScreenPoint(parentCanvas.worldCamera, lineAnchor.position);
+                    origin = parentCanvas.worldCamera.WorldToViewportPoint(lineAnchor.position);
+                    origin2 = parentCanvas.worldCamera.WorldToViewportPoint(lineAnchor2.position);
+
+                    origin.x *= Screen.width;
+                    origin.y *= Screen.height;
+
+                    origin2.x *= Screen.width;
+                    origin2.y = Screen.height - origin2.y * Screen.height;
+
+                //    origin = RectTransformUtility.WorldToScreenPoint(parentCanvas.worldCamera, lineAnchor.position);
+                //    origin2 = RectTransformUtility.WorldToScreenPoint(parentCanvas.worldCamera, lineAnchor2.position);
+
                     origin.y = Screen.height - origin.y;
+                    w = origin2.x - origin.x;
+                    h = origin2.y - origin.y;
                     break;
             }
-            w = rectTransform.rect.width * transform.localScale.x;
-            h = rectTransform.rect.height * transform.localScale.y;
+            
 
             // Iterate through the timeseries and draw the trend segment
             // by segment.

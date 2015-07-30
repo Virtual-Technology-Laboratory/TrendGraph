@@ -16,6 +16,11 @@ should take care of itself.
 If you need to procedurally set the public yMax, yMin, Timebase, and Value 
 fields call OnValidate to set the text.
 
+ChangeLog
+---------
+07-30-2015 Updated to handle all the Canvas Scaler modes when Canvas is in 
+Screen Space - Camera
+
 Caveats
 -------
 Need Unity 4.6+ for the UI. If not using Unity 5, need a pro license to use the
