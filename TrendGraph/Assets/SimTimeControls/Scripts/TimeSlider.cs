@@ -8,8 +8,6 @@
  * 
  */
 
-#define NOTDEBUG
-
 using UnityEngine;
 using System;
 using System.Collections;
@@ -84,10 +82,6 @@ namespace VTL.SimTimeControls
 			{
 				LastPlayState = false;
 			}
-
-	#if DEBUG
-	        Debug.Log(String.Format("{0}, {1}, {2}, {3}, {4}", IsPlaying, Time.time, slider.value, SimStep, SimTime));
-	#endif
 
 		}
 		
